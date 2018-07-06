@@ -21,10 +21,10 @@ app.get('/instafeed', (req, res) => {
     res.render('insta');
 });
 
-app.listen(3000, () => {
-    console.log("Server is running on 3000");
-});
-
-// app.listen(process.env.PORT, process.env.IP, function(){
-//     console.log("Server is running!")
+// app.listen(3000, () => {
+//     console.log("Server is running on 3000");
 // });
+
+app.listen(process.env.PORT, process.env.IP, function(){
+    console.log("Server is running!")
+});
