@@ -48,23 +48,11 @@ p {
     height: 100%;
 }
 
-@media (max-width: 1565px) {
-    .hero-title h1, .hero-title h2 {
-        color: white;
-        text-shadow: 2px 2px 2px black;
-    }
-}
-
-
 /* NAVIGATION */
 #navbar {
     position: absolute;
     top: 0%;
     right: 0%;
-}
-
-#mobile-nav {
-    display: none;
 }
 
 .nav-item {
@@ -82,8 +70,22 @@ p {
     border-bottom: 2px solid blue;
 }
 
+.menu {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    display: none;
+}
+
 @media(max-width: 800px){
     #navbar {
+        position: relative;
+    }
+    .nav-item{
+        display: block;
+    }
+
+    .hero img {
         display: none;
     }
 }
