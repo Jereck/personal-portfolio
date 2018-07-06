@@ -63,6 +63,10 @@ p {
     right: 0%;
 }
 
+#mobile-nav {
+    display: none;
+}
+
 .nav-item {
     display: inline-block;
     padding: 0 2em;
@@ -76,6 +80,12 @@ p {
 
 .nav-link:hover {
     border-bottom: 2px solid blue;
+}
+
+@media(max-width: 800px){
+    #navbar {
+        display: none;
+    }
 }
 
 .content {
