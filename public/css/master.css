@@ -238,3 +238,137 @@ footer h1 {
 @media (max-width: 661px) {
 
 }
+
+
+/* BLOG  */
+#blog {
+    margin: 100px auto 0 auto;
+    width: 80%;
+    min-height: 100vh;
+}
+
+.blog-box{
+    border-bottom: 1px solid black;
+    margin-bottom: 25px;
+    min-height: 200px;
+    padding: 5px 25px;
+}
+
+.blog-title {
+    font-size: 3rem;
+    font-weight: 300;
+}
+
+.blog-box-title {
+    margin-bottom: 5px;
+}
+
+.blog-box-date, .show-date {
+    display: block;
+    font-size: 0.6rem;
+}
+
+.blog-box-image {
+    width: 10%;
+    height: auto;
+}
+
+.show-container {
+    text-align: center;
+}
+
+.show-title {
+    font-size: 4rem;
+    font-weight: 300;
+    margin: 0;
+}
+
+.show-image {
+    max-width: 600px;
+    border-radius: 20px;
+    box-shadow: 2px 2px 5px black;
+}
+
+.show-content {
+    text-align: left;
+}
+
+.new-blog-form {
+    margin: 0 auto;
+}
+
+.new-blog-label {
+    font-size: 1.4rem;
+}
+
+.field {
+    display: block;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.blog-input {
+    border-radius: 5px;
+    height: 40px;
+    font-size: 1.5em;
+    box-shadow: 2px 2px 5px black;
+    width: 100%;
+}
+
+.blog-button {
+    border: 1px solid blue;
+    font-size: 1rem;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: blue;
+    font-weight: bold;
+    background-color: transparent;
+}
+
+.blog-button:hover {
+    background-color: blue;
+    color: white;
+}
+
+.ck-editor {
+    box-shadow: 2px 2px 5px black;
+}
+
+.ck-content {
+    height: 300px;
+}
+
+.edit-button {
+    background-color: transparent;
+    border: 1px solid orange;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin: 5px;
+    font-size: 1rem;
+    text-decoration: none;
+    color: orange;
+}
+
+.delete-button {
+    display: inline;
+}
+
+.delete-button button {
+    background-color: transparent;
+    border: 1px solid red;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin: 5px;
+    color: red;
+    font-size: 1rem;
+}
+
+.edit-button:hover {
+    background-color: orange;
+    color: white;
+}
+
+.delete-button button:hover {
+    background-color: red;
+    color: white;
+}
