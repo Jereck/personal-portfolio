@@ -11,7 +11,8 @@ const   express         = require('express'),
 
 var port = process.env.PORT || 3000;
 
-mongoose.connect("mongodb://localhost/portfolio_blog");
+// mongoose.connect("mongodb://localhost/portfolio_blog");
+mongoose.connect("mongodb://jereck:Stella1011@ds235411.mlab.com:35411/port_jake");
 
 app.use(require("express-session")({
     secret: "Stella is the cutest dog ever",
@@ -97,7 +98,6 @@ app.get('/blogs/:id', (req, res) => {
         if(err){
             res.redirect('/blogs');
         } else {
-            console.log(req.user);
             res.render('showblog', {blog: foundBlog, currentUser: req.user});
         }
     });
