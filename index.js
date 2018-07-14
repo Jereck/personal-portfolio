@@ -1,18 +1,42 @@
-const   express     = require('express'),
-        bodyParser  = require('body-parser'),
-        mongoose    = require('mongoose'),
-        methodOverride = require('method-override'),
-        app         = express();
+const   express         = require('express'),
+        bodyParser      = require('body-parser'),
+        mongoose        = require('mongoose'),
+        methodOverride  = require('method-override'),
+        passport        = require('passport'),
+        LocalStrategy   = require('passport-local'),
+        passportLocalMongoose = require('passport-local-mongoose'),
+
+        User            = require('./models/user'),
+        app             = express();
 
 var port = process.env.PORT || 3000;
 
 mongoose.connect("mongodb://localhost/portfolio_blog");
 
+app.use(require("express-session")({
+    secret: "Stella is the cutest dog ever",
+    resave: false,
+    saveUninitialized: false
+}));
+
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + "/public"));
 app.use(express.static(__dirname + "/views"));
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride("_method"));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+app.use((req, res, next) => {
+    res.locals.currentUser = req.user;
+    next();
+});
 
 var blogSchema = new mongoose.Schema({
     title: String,
@@ -73,7 +97,8 @@ app.get('/blogs/:id', (req, res) => {
         if(err){
             res.redirect('/blogs');
         } else {
-            res.render('showblog', {blog: foundBlog});
+            console.log(req.user);
+            res.render('showblog', {blog: foundBlog, currentUser: req.user});
         }
     });
 });
@@ -106,6 +131,37 @@ app.delete('/blogs/:id', (req, res) => {
             res.redirect('/blogs');
         }
     })
+});
+
+app.get('/register', (req, res) => {
+    res.render('register');
+});
+
+app.post('/register', (req, res) => {
+    User.register(new User({username: req.body.username}), req.body.password, (err, user) => {
+        if(err) {
+            console.log(err);
+            return res.render('register');
+        }
+        passport.authenticate("local")(req, res, function(){
+            res.redirect('/');
+        });
+    });
+});
+
+app.get('/login', (req, res) => {
+    res.render("login");
+});
+
+app.post('/login', passport.authenticate('local', {
+    successRedirect: '/blogs',
+    failureRedirect: '/login'
+}), (req, res) => {
+});
+
+app.get('/logout', (req, res) => {
+    req.logout();
+    res.redirect('/');
 });
 
 app.listen(port, () => {

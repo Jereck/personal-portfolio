@@ -2,14 +2,17 @@
 
 <div id='blog'>
     <h1 class="blog-title">Blog</h1>
+    <% if(currentUser) { %>
+        <a href="/blogs/new">New Blog</a>
+    <% } %>
 
     <% blogs.forEach(function(blog){ %>
         <div class="blog-box">
-            <h2 class="blog-box-title"><%= blog.title %></h2>
+            <h2 class="blog-box-title"><a href="/blogs/<%= blog._id %>"><%= blog.title %></a></h2>
             <img src="<%= blog.image %>" class="blog-box-image" />
             <span class="blog-box-date"><%= blog.created.toDateString() %></span>
             <p class="blog-box-body"><%- blog.body %></p>
-            <a href="/blogs/<%= blog._id %>">Read More</a>
+            <a href="/blogs/<%= blog._id %>" class="read-more-button">Read More</a>
         </div>
     <% }) %>
 </div>

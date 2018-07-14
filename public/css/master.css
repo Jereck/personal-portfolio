@@ -81,8 +81,9 @@ p {
     #navbar {
         position: relative;
     }
+
     .nav-item{
-        display: block;
+        display: inline;
     }
 
     .hero-title{
@@ -251,16 +252,23 @@ footer h1 {
     border-bottom: 1px solid black;
     margin-bottom: 25px;
     min-height: 200px;
-    padding: 5px 25px;
+    padding: 15px 25px;
 }
 
 .blog-title {
-    font-size: 3rem;
+    text-align: center;
+    font-size: 4rem;
     font-weight: 300;
 }
 
 .blog-box-title {
-    margin-bottom: 5px;
+    text-decoration: underline;
+    margin-bottom: 15px;
+}
+
+.blog-box-title a {
+    color: black;
+    text-decoration: none;
 }
 
 .blog-box-date, .show-date {
@@ -271,6 +279,21 @@ footer h1 {
 .blog-box-image {
     width: 10%;
     height: auto;
+}
+
+.read-more-button {
+    border: 1px solid blue;
+    background-color: transparent;
+    text-decoration: none;
+    color: blue;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.read-more-button:hover {
+    transition: ease-in 1s;
+    background-color: blue;
+    color: white;
 }
 
 .show-container {
@@ -284,6 +307,7 @@ footer h1 {
 }
 
 .show-image {
+    max-height: 600px;
     max-width: 600px;
     border-radius: 20px;
     box-shadow: 2px 2px 5px black;
